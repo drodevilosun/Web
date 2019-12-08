@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../Lib/vue.js"></script>
+
+    <!-- create area with name: "box" to test event -->
+    <style>
+        .box{
+            width: 200px;
+            height: 200px;
+            background-color: aqua;
+        }
+    </style>
+</head>
+<body>
+    <div id = "app">
+        <h1>Count: {{ counter }} </h1>
+        <!-- Test v-on:click event by increase number by 5 -->
+        <button v-on:click="handleClick($event, 5)" > Click me </button>
+        <!-- Test mouse move envent an print the event to "box" area -->
+        <div class="box" v-on:mousemove="handleMouseMove">
+            <p> ClientX: {{ clientX }} </p>
+            <p> ClientY: {{ clientY }} </p>
+        </div>
+    </div>
+    
+</body>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                counter: 0,
+                clientX: 0,
+                clientY: 0
+            },
+            methods: {
+                handleClick(e, number){
+                    console.log('click', e);
+                    this.counter += number;
+                },
+                handleMouseMove(e){
+                    console.log(e);
+                    this.clientX = e.clientX;
+                    this.clientY = e.clientY;
+                }
+            }
+        })
+    </script>
+</html>
