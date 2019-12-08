@@ -1,0 +1,10 @@
+
+filter =>> nhìu phần tử thành 1 vài phần tử
+map =>> tạo ra 1 array mới từ arr cũ
+find =>> tìm 1 phân tử trong arr, khi nào tìm đc break k tìm nữa
+reduce=>> nhìu phần tử kq trả về 1 phần tử duy nhất
+
+1. Learn basic js:
+contructor function là gì
+nó khác j với function bt
+prototype của contructor

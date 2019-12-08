@@ -6,3 +6,8 @@ ES6
 +spread 
 +rest params
 +class + inheritance
+
+Javascript:
+	filter
+	map
+	reduce
