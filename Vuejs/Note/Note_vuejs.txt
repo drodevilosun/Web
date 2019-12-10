@@ -1,0 +1,13 @@
+
+
+cấu trúc vue
+là cấu trúc của các component
+trong html được ghép lại vs nhau
+thông qua 2 method props vs state
+props =>> dữ liệu truyền cha sang con, thằng con muố thay dữ liệu j phải thông qua thằng cha
+state =>> thay đổi trực tiếp từ con, nhưng phải thông qua computed và contructor function
+còn về cấu trúc npm k cần hiểu vội đâu tiểu hoang, cứ init xài thôi
+cái trang nải t gửi tiểu hoang á, làm theo trong đó á, dễ hiêu, cấu trúc của nó k có nhìu html nên sẽ dễ tiếp cận hơn
+
+https://anonystick.com/blog-developer/higher-order-functions-in-javascript-201905107183914.jsx?fbclid=IwAR1lnHDZQzEpYAFa6JkGopUnvmKZYHnNRlcyG_zDcHpFXeHW4ZN9XpEODes
+https://vntalking.com/vuejs-tutorial-cho-nguoi-moi-tu-xay-dung-todo-app.html?fbclid=IwAR1-mqx8Gsskm1PV7V4qeXEwSP4joWOtATaGOUY9t1-_cIclMVQxXXCSLkw
