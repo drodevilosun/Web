@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Two way Bindings and  Class Style</title>
+    <script src="../Lib/vue.js"></script>
+</head>
+<body>
+    <!-- v-model -->
+    <div id="app">
+        <h1> FirstName = {{ firstName }} </h1>
+        <input v-on:keyup="handlKeyUp" type="text" placeholder="Input firstName">
+        <h1> LastName = {{ lastName }} </h1>
+        <p> {{ about }} </p>
+        <input v-model="lastName" type="text" placeholder="Input lastName">
+        <br>
+        <textarea v-model="about" cols="30" rows="10"></textarea>
+    </div>
+    
+</body>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                firstName: '',
+                lastName: 'Hoang',
+                about: ''
+            },
+            methods: {
+                handlKeyUp(e)
+                {
+                    this.firstName = e.target.value
+                    console.log(e.target.value);
+                }
+                // handlKeyModel(e)
+                // {
+                //     this.firstName = e.target.value
+                //     console.log(e.target.value);
+                // }
+            }
+
+        })
+    </script>
+</html>
