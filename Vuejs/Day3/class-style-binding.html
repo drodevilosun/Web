@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Two Way Bindings and Class and Style</title>
+    <script src="../Lib/vue.js"></script>
+    <style>
+        .demo {
+            width: 100px;
+            height: 100px;
+            background-color: yellow;
+        }
+        .demo.active {
+            background-color: blue;
+        }
+        .demo.error {
+            background-color: red;
+        }
+        
+    </style>
+</head>
+<body>
+    <!-- v-model -->
+    <div id="app">
+        <h1> FirstName = {firstName}} </h1>
+        <p> {{about}} </p>
+        <input v-model="firstName" type="text" placeholder="Input firstName">
+        <br>
+        <textarea v-model="about" col="30" row="60"> </textarea>
+
+    </div>
+</body>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            firstName: 'Huynh',
+            about: '...'
+        },
+        methods: {
+        
+        }
+
+    })
+</script>
+</html>
