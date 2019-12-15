@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../Lib/vue.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1> Manage task </h1>
+    <br>
+    <!-- <button v-on:click="handleClick($event, 5)" > Add task </button> -->
+    
+    <div id="app">
+        <input v-model="Task" type="text" placeholder="Input task">
+        <button v-on:click="addNewTodo($event, Task)" > Add task </button>
+        <!-- <button v-on:click="handleClick($event, 5)" > Click me </button> -->
+    
+        <table class="tableStyle" style="width:100%">
+            <tr>
+                <th>No.</th>
+                <th>Task</th> 
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+        </table>
+
+        <hr>
+
+        <h2>List task:</h2>
+        <Ul>
+            <li v-for="(todo,i) in todos" :class="{ completed: todo.isActive }" @click="$set(todo, 'isActive', !todo.isActive)"> {{ todo.task }} <span v-on:click="deleteTodo(i)">{{ todo.delete }}</span>
+            </li>
+        </Ul>
+
+    </div>
+    
+</body>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                // Task: '',   
+                message: 'List of things to do today',
+                todos: 
+                [
+                    // { task: 'Have breakfast', delete:'(x)'},
+                    // { task: 'Go to the gym', delete:'(x)'},
+                    // { task: 'Study Vuejs', delete:'(x)'}
+                ],
+                task: ''
+            },
+            methods: {
+                addTask(e, sTask) {
+                    console.log('click', sTask);
+                    this.task = sTask;
+                },
+
+                addNewTodo: function(e, sTask) {
+                    this.task = sTask;
+                    let todo = {task: this.task, delete: '(x)'};
+                    this.todos.push(todo);
+                    this.task = ''; // clear data in input
+                }
+            }
+
+        })
+    </script>
+</html>

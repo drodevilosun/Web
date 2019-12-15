@@ -1,0 +1,23 @@
+h1 {
+    text-align: center;
+}
+input {
+    text-align: left;
+}
+.tableStyle {
+    border: none;
+    width: 100%;
+    text-align: center;
+}
+.tableStyle th {
+    background-color: #cad8fa;
+    padding: 5px;
+}
+.tableStyle td {
+    background-color: #f0e7da;
+    padding: 5px;
+}
+/* table {
+    text-align: center;
+    border: 1;
+} */
