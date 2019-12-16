@@ -14,8 +14,8 @@
     <!-- <button v-on:click="handleClick($event, 5)" > Add task </button> -->
     
     <div id="app">
-        <input v-model="Task" type="text" placeholder="Input task">
-        <button v-on:click="addNewTodo($event, Task)" > Add task </button>
+        <input v-model="task" type="text" placeholder="Input task">
+        <button v-on:click="addNewTodo($event, task)" > Add task </button>
         <!-- <button v-on:click="handleClick($event, 5)" > Click me </button> -->
     
         <table class="tableStyle" style="width:100%">
@@ -37,7 +37,9 @@
 
         <h2>List task:</h2>
         <Ul>
-            <li v-for="(todo,i) in todos" :class="{ completed: todo.isActive }" @click="$set(todo, 'isActive', !todo.isActive)"> {{ todo.task }} <span v-on:click="deleteTodo(i)">{{ todo.delete }}</span>
+            <!-- <li v-for="(todo,i) in todos" :class="{ completed: todo.isActive }" @click="$set(todo, 'isActive', !todo.isActive)"> {{ todo.task }} <span v-on:click="deleteTodo(i)">{{ todo.delete }}</span> -->
+            <li v-for="tmp in todos">
+                {{ tmp.task }}
             </li>
         </Ul>
 
@@ -48,7 +50,6 @@
         var app = new Vue({
             el: '#app',
             data: {
-                // Task: '',   
                 message: 'List of things to do today',
                 todos: 
                 [
