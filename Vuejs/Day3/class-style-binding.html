@@ -24,11 +24,29 @@
 <body>
     <!-- v-model -->
     <div id="app">
-        <h1> FirstName = {firstName}} </h1>
-        <p> {{about}} </p>
-        <input v-model="firstName" type="text" placeholder="Input firstName">
-        <br>
-        <textarea v-model="about" col="30" row="60"> </textarea>
+        <!-- <div v-bind:style="{ backgroundImage: background }"> -->
+        <div v-bind:style="{ backgroundImage: background }">
+
+        <div v-bind:style="objectStyle">
+            <h1> FirstName = {firstName}} </h1>
+            <p> {{about}} </p>
+            <input v-model="firstName" type="text" placeholder="Input firstName">
+            <br>
+            <textarea v-model="about" col="30" row="60"> </textarea>
+            <!-- <div v-bind:class="'demo-' + textClass + 'error'"></div> -->
+            <button v-on:click="changeActive">Change Active</button>
+            <button v-on:click="changeError">Change Error</button>
+            <div 
+                class="demo" v-bind:class="objectClass"
+            
+            ></div>
+
+            <hr>
+            <div v-bind:style="{ color: activeColor, fontSize: fontSize + 'px', marginTop: '10px' }">
+                Test Style Bindings
+            </div>
+        </div>
+
 
     </div>
 </body>
@@ -37,10 +55,40 @@
         el: '#app',
         data: {
             firstName: 'Huynh',
-            about: '...'
+            about: '...',
+            textClass: 'active',
+            isActive: false,
+            isError: true,
+
+            activeColor: 'black',
+            fontSize: 20,
+            itachi: 'https://www.google.com/'
         },
         methods: {
-        
+            changeActive() {
+                this.isActive = !this.isActive;
+            },
+            changeError() {
+                this.isError = !this.isError;
+            }
+        },
+        computed: {
+            objectClass: function() {
+                return {
+                    active: this.isActive,
+                    error: this.isError
+                }
+            },
+            background() {
+                return 'url(' + this.itachi + ')'; 
+            },
+            objectStyle: function() {
+                return {
+                    backgroundImage: 'url(' + this.itachi + ')',
+                    margiin: '10px',
+                    paddingLeft: '30px'
+                }
+            }
         }
 
     })
