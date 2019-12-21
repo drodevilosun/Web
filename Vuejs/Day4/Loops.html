@@ -25,6 +25,10 @@
 </head>
 <body>
     <div id="app">
+        <!-- Please refer to parse_Loops_for_to_js to understand more about loop with condition in js -->
+        <!-- <div class="user" v-for="user in listUser" v-if="user.isActive === true"> {{user.email }} </div> -->
+        <!-- Used computed instead -->
+        <div class="user" v-for="user in userActive"> {{user.email }} </div>
         <ul>
             <li v-for="(value, x) in score" > {{ x }} : {{ value }} </li>
         </ul>
@@ -45,6 +49,14 @@
         var app = new Vue({
             el: '#app',
             data: {
+                listUser: [
+                    { email: "test1@gamil.com", isActive: false },
+                    { email: "test1@gamil.com", isActive: false },
+                    { email: "test1@gamil.com", isActive: false },
+                    { email: "test31@gamil.com", isActive: true },
+                    { email: "test1@gamil.com", isActive: true },
+                    { email: "test12@gamil.com", isActive: true },
+                ],
                 score: {
                     math: 9.0,
                     english: 8.5,
@@ -101,6 +113,13 @@
             },
             methods: {
             
+            },
+            computed: {
+                userActive() {
+                    return this.listUser.filter(function(u) {
+                        return u.isActive;
+                    });
+                }
             }
 
         })
