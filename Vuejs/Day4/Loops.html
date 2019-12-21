@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Loop Vuejs</title>
+    <script src="../Lib/vue.js"></script>
+    <style>
+        .list-animal {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .list-animal .animal {
+            width: 21%;
+            margin: 2px;
+            border:  1px solid #000;
+        }
+        .animal .title {
+            font-weight: 700;
+            font-size: 18px;
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <ul>
+            <li v-for="(value, x) in score" > {{ x }} : {{ value }} </li>
+        </ul>
+        <div class="list-animal">
+            <div v-for="(obj, index) in listAnimals"  class="animal" v-bidn:key="index">
+                <div class="title"> {{obj.name}} </div>
+                <div class="description"> {{index}}.{{obj.description}} </div>
+            </div>
+        </div>
+        <ul id="render">
+            
+        </ul>
+
+    </div>
+    
+</body>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                score: {
+                    math: 9.0,
+                    english: 8.5,
+                    physics: 8.0
+                },
+                listAnimals: 
+                [
+                    {
+                    "name": "Meowsy",
+                    "species" : "cat",
+                    "foods": {
+                        "likes": ["tuna", "catnip"],
+                        "dislikes": ["ham", "zucchini"]
+                    },
+                    "description": "this cat like tuna"
+                    },
+                    {
+                    "name": "Barky",
+                    "species" : "dog",
+                    "foods": {
+                        "likes": ["bones", "carrots"],
+                        "dislikes": ["tuna"]
+                    },
+                    "description": "this dog pig bone"
+                    },
+                    {
+                    "name": "Purrpaws",
+                    "species" : "cat",
+                    "foods": {
+                        "likes": ["mice"],
+                        "dislikes": ["cookies"]
+                    },
+                    "description": "this cat like mice"
+                    },
+                    {
+                    "name": "Tom",
+                    "species" : "tiger",
+                    "foods": {
+                        "likes": ["meat", "chicken"],
+                        "dislikes": ["water", "boring"]
+                    },
+                    "description": "this tiger is cute and it say Grrr!"
+                    },
+                    {
+                    "name": "Jerry",
+                    "species" : "lion",
+                    "foods": {
+                        "likes": ["meat", "chicken"],
+                        "dislikes": ["water", "boring"]
+                    },
+                    "description": "this lion is cute and it say Grrr!"
+                    }
+                ]
+            },
+            methods: {
+            
+            }
+
+        })
+    </script>
+</html>
