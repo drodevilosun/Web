@@ -29,37 +29,44 @@
     <div id = "app">
         <div class = "cart"> Cart ({{ cartNumber }}) </div>
         <div class="product">
-            <div class="product-image">
+            <div class="product_image">
                 <div class="image">
                     <img v-bind:src="getProduct.image" alt="">
                 </div>
             </div>
             <div class="product-content">
-                <h3 class="title"> Brand: </h3>
-                
-            </div>
-            
-        </div>
-        <div class = "product"></div>
-            <div class = "product_image">
-                <!-- <div class="image">
-                    <img v-bind:src="getProduct.image" alt="">
-                </div> -->
-                <div class = "product_content">
-                    <h3 class = "title">
-                        <a v-bind:href="url" v-bind:target="target"> {{ title }} </a>
-                    </h3>
-                    <h3>
-                        <p class="brand">Thương hiệu: No brand</p>
-                        <div class = "final-price"> {{ formatPrice() }} </div>
-                        <div></div>
-                        <!-- <p class="quantity" v-if="getProduct.quantity > 0">Còn lại: {{ getProduct.quantity }} Sản phẩm</p>
-                        <p class="quantity" v-if="getProduct.quantity <= 0">Sản phẩm đã hết hàng</p> -->
-                    </h3>
+                <h3 class="title">
+                    <a v-bind:href="url" v-bind:target="target"> {{title}} </a>
+                </h3>
+                <p class="brand">Brand: No brand</p>
+                <p class="status">Only $number left in stock </p>
+                <div class="price">
+                    {{formatPrice()}}
                 </div>
-            </div>
+                <hr>
+                <div class="all-shirt">
+                    <div class="text"> Color</div>
+                    <div class="list-shirt">
+                        <p class="text-color"> {{getProduct.textColor}} </p>
+                        <ul>
+                            <li>small images place here</li>
+                        </ul>
+                    </div>
+                </div>
 
-    </div>
+                <button  class="add_to_cart">
+                    Add to cart
+                </button>
+            </div>
+              
+        </div> <!-- class product-->
+        <div class="content">
+            <ul>
+                <li v-for="descip in listDescription"> {{descip}} </li>
+            </ul>
+        </div>
+
+    </div> <!-- class app-->
     <footer><h1> Footer </h1></footer>
     <!-- <script src="main.js"></script> -->
 </body>

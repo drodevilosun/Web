@@ -33,7 +33,7 @@
             <li v-for="(value, x) in score" > {{ x }} : {{ value }} </li>
         </ul>
         <div class="list-animal">
-            <div v-for="(obj, index) in listAnimals"  class="animal" v-bidn:key="index">
+            <div v-for="(obj, index) in listAnimals"  class="animal" v-bind:key="index">
                 <div class="title"> {{obj.name}} </div>
                 <div class="description"> {{index}}.{{obj.description}} </div>
             </div>

@@ -1,6 +1,5 @@
 
 
-
 body {
     margin: 0;
     font-family: Arial, Helvetica, sans-serif;
@@ -27,15 +26,76 @@ header h1, footer h1 {
     border: 1px solid #000;
     text-align: center;
 }
-.product .product-image {
+.title {
+    margin-top: 0px;
+}
+.title a {
+    text-decoration: none;
+    color: #000;
+}
+.product {
+    max-width: 700px;
+    display: flex;
+    margin-top: 20px;
+    position: relative;
+}
+.product .product_image {
     flex-basis: 40%;
     max-width: 40%;
     padding-right: 30px;
 }
-.product-image .image {
+.product_image .image {
     width: 100%;
     border: 1px solid #ccc;
 }
-.product-image .image img {
+.product_image .image img {
     display: block;
 }
+img {
+    max-width: 100%;
+}
+.add_to_cart {
+    border: 1px solid #ffb916;
+    background: #ffb916;
+    color: #fff;
+    display: block;
+    padding: 12px 30px;
+    margin-top: 30px;
+    text-transform: uppercase;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.wrapper-color {
+    display: flex;
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid #eee;
+}
+.wrapper-color .text {
+    width: 100px;
+    min-width: 100px;
+}
+.wrapper-color p {
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+.list-color ul {
+    list-style-type: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+.list-color ul li {
+    width: 40px;
+    height: 40px;
+    border: 1px solid #ccc;
+    margin-right: 20px;
+}
+.list-color ul li:hover,
+.list-color ul li.active {
+    border-color: #f57224;
+}
+/* .content {
+    
+} */

@@ -1,7 +1,7 @@
 var VueInstane = new Vue({
     el: "#app",
     data: {
-        title: 'Quần thun nam thể thao hàng VNXK vải dày mịn - Vải Đốm',
+        title: 'Áo thun nam thể thao hàng VNXK vải dày mịn - Vải Đốm',
         url: 'https://www.lazada.vn/products/ao-thun-nam-the-thao-hang-vnxk-vai-day-min-vai-dom-i265780948-s382816279.html',
         target: '_blank',
         price: 10000,
@@ -9,20 +9,29 @@ var VueInstane = new Vue({
         listProduct: [
             {
                 image: './images/black.jpg',
-                textColor: 'Red',
-                quantity: 1
+                textColor: 'Black',
+                quantity: 0
             },
             {
                 image: './images/blue.jpg',
-                textColor: 'Red',
-                quantity: 1
+                textColor: 'Blue',
+                quantity: 3
             },
             {
                 image: './images/red.jpg',
                 textColor: 'Red',
-                quantity: 1
+                quantity: 10
             }
+        ],
+
+        listDescription: [
+            'Chất liệu: polyester và thun',
+            'Thoát mồ hôi tốt',
+            'Áo thun cổ tròn thể thao Hiye chuyên được may từ chất liệu nilon thoáng mát',
+            'Kết hợp thêm sợi thun tạo độ co giãn giúp người tiêu dùng thoải mái khi mặc',
+            'Chất liệu: polyester và thun'
         ]
+        
     },
 
     methods: {
@@ -34,12 +43,13 @@ var VueInstane = new Vue({
 
     },
     computed: {
-        getProduct() {
+        getProduct()
+        {
             return this.listProduct[0];
+        },
+        handle_add_to_cart()
+        {
+            this.cartNumber = this.cartNumber + 1;
         }
     }
-
-
-
-
 });
