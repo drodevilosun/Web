@@ -8,17 +8,7 @@
     <script src="../Lib/vue.js"></script>
     <link rel="stylesheet" href="style.css">
 </head>
-    <div id="obj">
-        <p> {{ content }} </p>
-    </div>
-    <script>
-        new Vue({
-            el : '#obj',
-            data: {
-                content: 'Hello world! Vuejs',
-            }
-        });
-    </script>
+
 <body>
     <header><h1> Header </h1></header>
     <div class="first-log">
@@ -40,16 +30,24 @@
                 </h3>
                 <p class="brand">Brand: No brand</p>
                 <p class="status">Only $number left in stock </p>
-                <div class="price">
-                    {{formatPrice()}}
+                <div class="wrapped-price">
+                    <div class="final_price"> {{ formatPrice }} </div>
+                    <div class="origin_price"> {{ formatOriginPrice }} </div>
+                    <div class="discount_percent"> -{{ discount * 100}}% </div>
                 </div>
-                <hr>
                 <div class="all-shirt">
                     <div class="text"> Color</div>
                     <div class="list-shirt">
                         <p class="text-color"> {{getProduct.textColor}} </p>
                         <ul>
-                            <li>small images place here</li>
+                            <li 
+                                v-for="(item, index) in listProduct"
+                                v-bind:class="productActive(index)"
+                                v-bind:key="index"
+                                v-on:click="handleProductClick($e, index)"
+                            >
+                                <img v-bind:src="item.image" v-bind:alt="item.textColor">
+                            </li>
                         </ul>
                     </div>
                 </div>

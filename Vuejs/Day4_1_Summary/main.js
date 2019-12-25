@@ -5,6 +5,7 @@ var VueInstane = new Vue({
         url: 'https://www.lazada.vn/products/ao-thun-nam-the-thao-hang-vnxk-vai-day-min-vai-dom-i265780948-s382816279.html',
         target: '_blank',
         price: 10000,
+        discount: 0.1,
         cartNumber: 1,
         listProduct: [
             {
@@ -35,10 +36,8 @@ var VueInstane = new Vue({
     },
 
     methods: {
-        formatPrice(){
-            var number = this.price;
-            
-            return new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'USD' }).format(number);
+        productActive(index){
+            return this.listProduct[index];
         }
 
     },
@@ -50,6 +49,17 @@ var VueInstane = new Vue({
         handle_add_to_cart()
         {
             this.cartNumber = this.cartNumber + 1;
-        }
+        },
+        handleProductClick(e, number){
+            return 0;
+        },
+        formatPrice(){
+            var number = this.price - this.discount * this.price;
+            return new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'VND' }).format(number);
+        },
+        formatOriginPrice(){
+            var number = this.price;
+            return new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'VND' }).format(number);
+        },
     }
 });

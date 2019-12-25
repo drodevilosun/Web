@@ -66,35 +66,56 @@ img {
     cursor: pointer;
 }
 
-.wrapper-color {
+.all-shirt {
     display: flex;
     margin-top: 15px;
     padding-top: 15px;
     border-top: 1px solid #eee;
 }
-.wrapper-color .text {
+.all-shirt .text {
     width: 100px;
     min-width: 100px;
 }
-.wrapper-color p {
+.list-shirt p {
     margin-top: 0;
     margin-bottom: 10px;
 }
-.list-color ul {
+.list-shirt ul {
     list-style-type: none;
     display: flex;
     margin: 0;
     padding: 0;
 }
-.list-color ul li {
+.list-shirt ul li {
     width: 40px;
     height: 40px;
     border: 1px solid #ccc;
     margin-right: 20px;
 }
-.list-color ul li:hover,
-.list-color ul li.active {
+.list-shirt ul li:hover,
+.list-shirt ul li.active {
     border-color: #f57224;
+}
+.wrapped-price .final_price {
+    color: #f57224;
+    font-weight: 700;
+    font-size: 22px;
+    margin-bottom: 5px;
+}
+.wrapped-price .origin_price,
+.wrapped-price .discount_percent {
+    display: inline-block;
+    font-size: 14px;
+    color: #ccc;
+    vertical-align: middle;
+}
+.wrapped-price .discount_percent {
+    color: #333;
+    margin-left: 5px;
+    padding: 3px;
+    font-size: 10px;
+    border-radius: 5px;
+    border: 1px solid #f57224;
 }
 /* .content {
     
