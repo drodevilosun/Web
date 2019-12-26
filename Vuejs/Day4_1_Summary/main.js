@@ -7,6 +7,7 @@ var VueInstane = new Vue({
         price: 10000,
         discount: 0.1,
         cartNumber: 1,
+        selectedProduct: 0,
         listProduct: [
             {
                 image: './images/black.jpg',
@@ -36,23 +37,31 @@ var VueInstane = new Vue({
     },
 
     methods: {
-        productActive(index){
-            return this.listProduct[index];
+        productActive( number ){
+            // return this.listProduct[this.selectedProduct];
+            return {
+                active: this.listProduct === number
+            }
+        },
+        handleProductClick(e, number){
+            this.selectedProduct = number;
+        },
+        handle_add_to_cart()
+        {
+            if (this.cartNumber >= this.getProduct.quantity)
+                alert('out of stock');
+            else
+                this.cartNumber = this.cartNumber + 1;
         }
 
     },
     computed: {
         getProduct()
         {
-            return this.listProduct[0];
+            return this.listProduct[this.selectedProduct];
         },
-        handle_add_to_cart()
-        {
-            this.cartNumber = this.cartNumber + 1;
-        },
-        handleProductClick(e, number){
-            return 0;
-        },
+        
+        
         formatPrice(){
             var number = this.price - this.discount * this.price;
             return new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'VND' }).format(number);

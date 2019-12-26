@@ -29,7 +29,7 @@
                     <a v-bind:href="url" v-bind:target="target"> {{title}} </a>
                 </h3>
                 <p class="brand">Brand: No brand</p>
-                <p class="status">Only $number left in stock </p>
+                <p class="status">Only {{getProduct.quantity}} left in stock </p>
                 <div class="wrapped-price">
                     <div class="final_price"> {{ formatPrice }} </div>
                     <div class="origin_price"> {{ formatOriginPrice }} </div>
@@ -52,7 +52,7 @@
                     </div>
                 </div>
 
-                <button  class="add_to_cart">
+                <button  class="add_to_cart" v-on:click="handle_add_to_cart()">
                     Add to cart
                 </button>
             </div>
