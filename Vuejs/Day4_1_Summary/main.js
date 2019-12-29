@@ -40,9 +40,10 @@ var VueInstane = new Vue({
         productActive( number ){
             // return this.listProduct[this.selectedProduct];
             return {
-                active: this.listProduct === number
+                active: this.selectedProduct === number
             }
         },
+        // không thể để ở computed vì có tham số
         handleProductClick(e, number){
             this.selectedProduct = number;
         },

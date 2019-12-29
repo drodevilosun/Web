@@ -10,61 +10,65 @@
 </head>
 
 <body>
-    <header><h1> Header </h1></header>
-    <div class="first-log">
-        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Modi sunt eveniet maxime magni in, nostrum
-            facilis, temporibus, quam facere sint est blanditiis harum dicta. Tempore suscipit ut hic. Deleniti,
-            qui.</p>
-    </div>
-    <div id = "app">
-        <div class = "cart"> Cart ({{ cartNumber }}) </div>
-        <div class="product">
-            <div class="product_image">
-                <div class="image">
-                    <img v-bind:src="getProduct.image" alt="">
-                </div>
-            </div>
-            <div class="product-content">
-                <h3 class="title">
-                    <a v-bind:href="url" v-bind:target="target"> {{title}} </a>
-                </h3>
-                <p class="brand">Brand: No brand</p>
-                <p class="status">Only {{getProduct.quantity}} left in stock </p>
-                <div class="wrapped-price">
-                    <div class="final_price"> {{ formatPrice }} </div>
-                    <div class="origin_price"> {{ formatOriginPrice }} </div>
-                    <div class="discount_percent"> -{{ discount * 100}}% </div>
-                </div>
-                <div class="all-shirt">
-                    <div class="text"> Color</div>
-                    <div class="list-shirt">
-                        <p class="text-color"> {{getProduct.textColor}} </p>
-                        <ul>
-                            <li 
-                                v-for="(item, index) in listProduct"
-                                v-bind:class="productActive(index)"
-                                v-bind:key="index"
-                                v-on:click="handleProductClick($e, index)"
-                            >
-                                <img v-bind:src="item.image" v-bind:alt="item.textColor">
-                            </li>
-                        </ul>
+    <header>
+        <h1> Header </h1>
+    </header>
+    <div class="container">
+        <div class="first-log">
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Modi sunt eveniet maxime magni in, nostrum
+                facilis, temporibus, quam facere sint est blanditiis harum dicta. Tempore suscipit ut hic. Deleniti,
+                qui.</p>
+        </div>
+        <div id = "app">
+            <div class = "cart"> Cart ({{ cartNumber }}) </div>
+            <div class="product">
+                <div class="product_image">
+                    <div class="image">
+                        <img v-bind:src="getProduct.image" alt="">
                     </div>
                 </div>
+                <div class="product-content">
+                    <h3 class="title">
+                        <a v-bind:href="url" v-bind:target="target"> {{title}} </a>
+                    </h3>
+                    <p class="brand">Brand: No brand</p>
+                    <p class="status">Only {{getProduct.quantity}} left in stock </p>
+                    <div class="wrapped-price">
+                        <div class="final_price"> {{ formatPrice }} </div>
+                        <div class="origin_price"> {{ formatOriginPrice }} </div>
+                        <div class="discount_percent"> -{{ discount * 100}}% </div>
+                    </div>
+                    <div class="all-shirt">
+                        <div class="text"> Color</div>
+                        <div class="list-shirt">
+                            <p class="text-color"> {{getProduct.textColor}} </p>
+                            <ul>
+                                <li 
+                                    v-for="(item, index) in listProduct"
+                                    v-bind:class="productActive(index)"
+                                    v-bind:key="index"
+                                    v-on:click="handleProductClick($e, index)"
+                                >
+                                    <img v-bind:src="item.image" v-bind:alt="item.textColor">
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
 
-                <button  class="add_to_cart" v-on:click="handle_add_to_cart()">
-                    Add to cart
-                </button>
+                    <button  class="add_to_cart" v-on:click="handle_add_to_cart()">
+                        Add to cart
+                    </button>
+                </div>
+                
+            </div> <!-- class product-->
+            <div class="content">
+                <ul>
+                    <li v-for="descip in listDescription"> {{descip}} </li>
+                </ul>
             </div>
-              
-        </div> <!-- class product-->
-        <div class="content">
-            <ul>
-                <li v-for="descip in listDescription"> {{descip}} </li>
-            </ul>
-        </div>
 
-    </div> <!-- class app-->
+        </div> <!-- class app-->
+    </div> <!-- class container-->
     <footer><h1> Footer </h1></footer>
     <!-- <script src="main.js"></script> -->
 </body>
