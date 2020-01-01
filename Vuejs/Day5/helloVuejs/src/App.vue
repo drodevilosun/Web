@@ -1,7 +1,11 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
+    <!-- <CompHeader></CompHeader> -->
+    <!-- <CompHeader/> -->
+    <comp-header/>
+    <list-user/>
     <h1>{{ msg }}</h1>
+    <comp-footer/>
     
   </div>
 </template>
@@ -18,12 +22,19 @@ App
     Product
   Footer
 */
+import CompHeader from './components/ComponentHeader.vue';
+import CompFooter from './components/ComponenentFooter';
+import ListUser from './components/ListUser.vue';
 export default {
   name: 'app',
   data () {
     return {
-      msg: 'Hello VueJs'
     }
+  },
+  components: {
+    CompHeader,
+    CompFooter,
+    ListUser
   }
 }
 </script>
@@ -37,21 +48,5 @@ export default {
   margin-top: 60px;
 }
 
-h1, h2 {
-  font-weight: normal;
-}
 
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-
-a {
-  color: #42b983;
-}
 </style>
