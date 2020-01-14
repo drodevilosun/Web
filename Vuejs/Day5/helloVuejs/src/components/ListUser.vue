@@ -1,6 +1,6 @@
 <template>
     <div class="list-user">
-        <p>List User Component</p>
+        <!-- <p>List User Component</p> -->
         <user 
             v-for="user in listUser"
             v-bind:key="user.id"
@@ -36,5 +36,17 @@ export default {
 </script>
 
 <style>
+    .list-user {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+    .list-user .user {
+        padding: 30px;
+
+        margin-bottom: 30px;
+        border: 1px solid #333;
+        width: calc(33.333$ - 20px)
+    }
 
 </style>

@@ -3,11 +3,18 @@
     <!-- <CompHeader></CompHeader> -->
     <!-- <CompHeader/> -->
     <!-- <comp-header v-bind:titleHeader="title"/> -->
-    <comp-header v-bind:title="title"/>
-    <comp-header titleHeader="title"/>
-    <list-user v-bind:listUser="listUser"/>
-    <!-- <h1>{{ msg }}</h1> -->
-    <comp-footer v-bind:title="title"/>
+    <div class="container">
+      <button v-on:click="title = 'Program VueJs'"> Change title from Component App.vue </button>
+    
+      <comp-header 
+        v-bind:title="title"
+        v-on:changeTitleEvent="handleChangeTitle"
+      />
+      <!-- <comp-header titleHeader="title"/> -->
+      <list-user v-bind:listUser="listUser"/>
+      <!-- <h1>{{ msg }}</h1> -->
+      <comp-footer v-bind:title="title"/>
+    </div>
     
   </div>
 </template>
@@ -48,8 +55,26 @@ export default {
     CompHeader,
     CompFooter,
     ListUser
+  },
+  methods: {
+    handleChangeTitle(data) {
+      // this.title = 'Program VueJs! -> Header change';
+      this.title = data.title;
+      console.log('handleChangeTitle is called after activated successfully App.vue', data);
+    }
   }
 }
+/*
+Props Down -> transfer data from base to parent
+Props Down -> truyền dữ liệu từ cha vào con -> Thằng con chỉ được xài, không được phép thay đổi
+Event Up -> truyền thông điệp (sự kiện) thông báo Component cha biết là nó muốn thay đổi dữ liệu -> Nhiệm vu của Component cha là nhận được thông báo và tiến hành thay đổi data
+  -> Custom event in VueJs
+
+  click -> Sự kiện có sẵn trong VueJs
+  v-on:click="changeTitle"
+    'click' -> Tên của sự kiện
+    'changeTitle' -> Hàm xử lý khi sự kiện được kích hoạt (Khi người dúng click) 
+*/
 </script>
 <style>
 #app {
@@ -59,6 +84,12 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+.container {
+  max-width:  1170px;
+  margin: 0 auto;
+  padding: 0 15px;
+  min-height: 3000px;
 }
 
 
