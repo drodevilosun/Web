@@ -7,11 +7,15 @@
       <button v-on:click="title = 'Program VueJs'"> Change title from Component App.vue </button>
     
       <comp-header 
+        v-bind:listUser="listUser"
         v-bind:title="title"
         v-on:changeTitleEvent="handleChangeTitle"
       />
       <!-- <comp-header titleHeader="title"/> -->
-      <list-user v-bind:listUser="listUser"/>
+      <list-user 
+        v-on:deleteUserEvent="handleDeleteUser"
+        v-bind:listUser="listUser"
+      />
       <!-- <h1>{{ msg }}</h1> -->
       <comp-footer v-bind:title="title"/>
     </div>
@@ -60,7 +64,24 @@ export default {
     handleChangeTitle(data) {
       // this.title = 'Program VueJs! -> Header change';
       this.title = data.title;
-      console.log('handleChangeTitle is called after activated successfully App.vue', data);
+      // console.log('handleChangeTitle is called after activated successfully App.vue', data);
+    },
+    handleDeleteUser(data) {
+      var indexDelete = -1;
+      this.listUser.forEach((u, idx) => {
+        // console.log(u.id, idx, data.id);
+        if (u.id === data.id) {
+          indexDelete = idx;
+        }
+        
+      });
+      if (indexDelete != -1)
+      {
+        var test = this.listUser.splice(indexDelete, 1);
+        // console.log("test = ", test);
+      }
+      // console.log('indexDelete after run for: ', indexDelete);
+      // console.log('handleDeleteUser in App.vue', data);
     }
   }
 }

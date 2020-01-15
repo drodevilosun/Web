@@ -5,6 +5,7 @@
             v-for="user in listUser"
             v-bind:key="user.id"
             v-bind:user="user"
+            v-on:deteleUser="deleteUser"
         />
         <!-- <user/>
         <user/>
@@ -15,6 +16,13 @@
 </template>
 
 <script>
+/*
+App
+    ListUser -> Không dc thay đổi arrListUser -> Truyền tiếp Event thêm 1 lần nữa ra App.vue
+        User -> Truyền event thong báo cho ListUser
+        User
+        User
+*/
 import User from './User.vue';
 export default {
     name: 'list-user',
@@ -31,6 +39,13 @@ export default {
     },
     components: {
         User
+    },
+    methods: {
+        deleteUser(data) {
+            
+            // console.log('deteleUser ListUser.vue', data);
+            this.$emit('deleteUserEvent', data);
+        }
     }
 }
 </script>
