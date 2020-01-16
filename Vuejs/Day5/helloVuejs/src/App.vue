@@ -18,6 +18,7 @@
       />
       <!-- <h1>{{ msg }}</h1> -->
       <comp-footer v-bind:title="title"/>
+      <demo-ref/>
     </div>
     
   </div>
@@ -39,6 +40,7 @@ App ({title, listUser[])
 import CompHeader from './components/ComponentHeader.vue';
 import CompFooter from './components/ComponenentFooter.vue';
 import ListUser from './components/ListUser.vue';
+import DemoRef from './components/DemoRef.vue';
 export default {
   name: 'app',
   data () {
@@ -58,7 +60,8 @@ export default {
   components: {
     CompHeader,
     CompFooter,
-    ListUser
+    ListUser,
+    DemoRef
   },
   methods: {
     handleChangeTitle(data) {
