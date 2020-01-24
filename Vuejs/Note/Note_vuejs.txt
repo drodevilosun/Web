@@ -11,3 +11,4 @@ cái trang nải t gửi tiểu hoang á, làm theo trong đó á, dễ hiêu, c
 
 https://anonystick.com/blog-developer/higher-order-functions-in-javascript-201905107183914.jsx?fbclid=IwAR1lnHDZQzEpYAFa6JkGopUnvmKZYHnNRlcyG_zDcHpFXeHW4ZN9XpEODes
 https://vntalking.com/vuejs-tutorial-cho-nguoi-moi-tu-xay-dung-todo-app.html?fbclid=IwAR1-mqx8Gsskm1PV7V4qeXEwSP4joWOtATaGOUY9t1-_cIclMVQxXXCSLkw
+

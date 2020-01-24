@@ -19,6 +19,11 @@
       <!-- <h1>{{ msg }}</h1> -->
       <comp-footer v-bind:title="title"/>
       <demo-ref/>
+      <demo-slot>
+        <div class="app-slot">
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt officiis accusantium voluptas repudiandae recusandae nostrum totam alias ipsa distinctio? Quibusdam ad reiciendis eos consequuntur qui ullam nostrum possimus nisi eum.</p>
+        </div>
+      </demo-slot>
     </div>
     
   </div>
@@ -41,6 +46,7 @@ import CompHeader from './components/ComponentHeader.vue';
 import CompFooter from './components/ComponenentFooter.vue';
 import ListUser from './components/ListUser.vue';
 import DemoRef from './components/DemoRef.vue';
+import DemoSlot from './components/DemoSlot.vue';
 export default {
   name: 'app',
   data () {
@@ -61,7 +67,8 @@ export default {
     CompHeader,
     CompFooter,
     ListUser,
-    DemoRef
+    DemoRef,
+    DemoSlot
   },
   methods: {
     handleChangeTitle(data) {
