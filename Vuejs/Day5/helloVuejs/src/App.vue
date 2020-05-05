@@ -93,6 +93,34 @@ export default {
       // console.log('indexDelete after run for: ', indexDelete);
       // console.log('handleDeleteUser in App.vue', data);
     }
+  },
+  // End of methods:
+  beforeCreate() {
+    console.log('beforeCreated', this.title, document.querySelector('.container'));
+  },
+  created() {
+    // Call API, call Ajax
+    console.log('created', this.title, document.querySelector('.container'));
+  },
+  beforeMount() {
+    console.log('beforeMounted', this.title, document.querySelector('.container'));
+  },
+  mounted() {
+    // Used jQuery -> Only access DOM on mounted
+    console.log('mounted', this.title, document.querySelector('.container').classList);
+  },
+  beforeUpdate() {
+    console.log('beforeUpdate', this.title);
+  },
+  updated() {
+    console.log('updated', this.title);
+  },
+  beforeDestroy() {
+    console.log('beforeDestroy');
+  },
+  Destroy() {
+    // Destroy các thư viện của bên thứ 3 
+    console.log('Destroy');
   }
 }
 /*
