@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../Lib/vue.js"></script>
+</head>
+    <div id="obj">
+        <p> {{ content }} </p>
+    </div>
+    <script>
+        new Vue({
+            el : '#obj',
+            data: {
+                content: 'Hello world! Vuejs',
+            }
+        });
+    </script>
+<body>
+    <header><h1> Header </h1></header>
+    <div class="web-app">
+        <p>hello and hi, this is my first app</p>
+    </div>
+    <div id = "app">
+        <h1>
+            {{ title }}
+        </h1>
+        <p>
+            {{ title }}
+        </p>
+        <h2>
+            {{ talk("World") }}
+            <br>
+            {{ talk("Hoang Huynh") }}
+        </h2>
+    </div>
+    <footer><h1> Footer </h1></footer>
+    
+</body>
+<script src="main.js"></script>
+</html>
