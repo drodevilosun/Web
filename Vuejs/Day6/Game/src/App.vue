@@ -8,6 +8,7 @@
     />
     <controls 
       v-on:handleNewGame="handleNewGame"
+      v-on:handleRollDice="handleRollDiceApp"
     />
     <dices 
       v-bind:dicesCom="dices"
@@ -65,6 +66,29 @@ export default {
       this.isOpenPopup = true;
 
     },
+    handleRollDiceApp()
+    {
+      console.log("handleRollDice App.vue");
+      if (this.isPlaying)
+      {
+        //roll dice
+        //Math.random(): 0->1
+        /*
+          0 <= x <= 1
+          0*6 <= x*6 <= 1*6
+          0 <= y= x*6 <= 6
+        */
+       var dice1 = Math.floor(Math.random() * 6) + 1;
+       var dice2 = Math.floor(Math.random() * 6) + 1;
+       console.log(dice1, dice2);
+       this.dices = [dice1, dice2];
+
+      }
+      else
+      {
+        alert("Vui lòng nhấp vào nút New Game");
+      }
+    }
   }
 }
 </script>
