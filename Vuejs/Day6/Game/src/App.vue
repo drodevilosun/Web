@@ -9,6 +9,7 @@
     <controls 
       v-on:handleNewGame="handleNewGame"
       v-on:handleRollDice="handleRollDiceApp"
+      v-on:handleHoldScoreCom="handleHoldScore"
     />
     <dices 
       v-bind:dicesCom="dices"
@@ -49,6 +50,53 @@ export default {
     PopupRule
   },
   methods: {
+    handleHoldScore()
+    {
+		if (this.isPlaying === true)
+		{
+			console.log('handleHoldScore in App.vue');
+			//activePlayer = 0 -> Player 1 is playing
+			//acticePlayer = 1 -> Player 2 is playing
+			//scoresPlayer -> array
+			//scoresPlayer[0] -> scoresPlayer[activePlayer]
+			//scoresPlayer[1] -> scoresPlayer[activePlayer]
+
+			// this.scoresPlayer[this.activePlayer] = this.scoresPlayer[this.scoresPlayer] + this.currentScore;
+			let {scoresPlayer, activePlayer, currentScore} = this;
+			let scoreOld = scoresPlayer[activePlayer];
+
+			// this.scoresPlayer[activePlayer] = scoreOld + currentScore;
+			/* 
+			Cách trên không khả thi vì địa chỉ của Array vẫn được giữ nguyên
+			Nếu không thay đổi về mặt địa chỉ thì Vue sẽ không phản ứng lại
+			-> vùng nhớ vẫn giữ nguyên -> 
+			Có 2 cách thay đổi
+				clone array: tạo 1 array mới: cú pháp: 
+					let cloneScorePlayer = [...scoresPlayer];
+				Sử dụng hàm set
+			*/
+			/*Cách 1: Clone  */
+			// let cloneScorePlayer = [...scoresPlayer];
+			// cloneScorePlayer[activePlayer] = scoreOld + currentScore;
+			/*Khi tạo mảng mới thì chỉ cần gán mảng cũ qua địa chỉ mảng mới */
+			// this.scoresPlayer = cloneScorePlayer;
+
+			/*Cách 2: sử dụng set */
+			this.$set(this.scoresPlayer, activePlayer, scoreOld + currentScore);
+			
+			
+			
+
+			this.nextPlalyer();
+			// console.log(cloneScorePlayer);
+
+		}
+		else
+		{
+			alert("Vui lòng nhấp vào nút New Game");
+		}
+		
+    },
     handleConfirm()
     {
         this.isPlaying = true;
@@ -77,47 +125,47 @@ export default {
         console.log("handleRollDice App.vue");
         if (this.isPlaying)
         {
-        //roll dice
-        //Math.random(): 0->1
-        /*
-            0 <= x <= 1
-            0*6 <= x*6 <= 1*6
-            0 <= y= x*6 <= 6
-        */
-        var dice1 = Math.floor(Math.random() * 6) + 1;
-        var dice2 = Math.floor(Math.random() * 6) + 1;
-        
-        this.dices = [dice1, dice2];
-        console.log(dice1, dice2);
+			//roll dice
+			//Math.random(): 0->1
+			/*
+				0 <= x <= 1
+				0*6 <= x*6 <= 1*6
+				0 <= y= x*6 <= 6
+			*/
+			var dice1 = Math.floor(Math.random() * 6) + 1;
+			var dice2 = Math.floor(Math.random() * 6) + 1;
+			
+			this.dices = [dice1, dice2];
+			console.log(dice1, dice2);
 
-        if (dice1 === 1 || dice2 ===1)
-        {
-            // Đổi lượt chơi
-            let activePlayer = this.activePlayer;
-            // Use arrow fucntion
-            setTimeout(() => {
-                console.log(this); //'this' ở đây thuộc thằng Vue
-                alert(`Người chơi Player ${this.activePlayer + 1} đã quay trúng số 1. Next Player`);
-            }, 10);
-            // Use function()
-            // setTimeout(function() {
-            //     console.log(this); //'this' ở đây thuộc Window
-            //     alert(`Người chơi Player ${activePlayer + 1} đã quay trúng số 1. Next Player`);
-            // }, 10);
-            
-            this.nextPlalyer();
-            // Reset điểm tạm thời về 0
+			if (dice1 === 1 || dice2 ===1)
+			{
+				// Đổi lượt chơi
+				let activePlayer = this.activePlayer;
+				// Use arrow fucntion
+				setTimeout(() => {
+					console.log(this); //'this' ở đây thuộc thằng Vue
+					alert(`Người chơi Player ${this.activePlayer + 1} đã quay trúng số 1. Next Player`);
+				}, 10);
+				// Use function()
+				// setTimeout(function() {
+				//     console.log(this); //'this' ở đây thuộc Window
+				//     alert(`Người chơi Player ${activePlayer + 1} đã quay trúng số 1. Next Player`);
+				// }, 10);
+				
+				this.nextPlalyer();
+				// Reset điểm tạm thời về 0
+			}
+			else
+			{
+				// Cộng dồn vảo điểm tạm thời cho ngưởi chơi
+				this.currentScore = this.currentScore + dice1 + dice2;
+			}
+
         }
         else
         {
-            // Cộng dồn vảo điểm tạm thời cho ngưởi chơi
-            this.currentScore = this.currentScore + dice1 + dice2;
-        }
-
-        }
-        else
-        {
-        alert("Vui lòng nhấp vào nút New Game");
+        	alert("Vui lòng nhấp vào nút New Game");
         }
     }
   }
