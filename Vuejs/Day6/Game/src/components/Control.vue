@@ -13,19 +13,64 @@
         ><i class="ion-ios-download-outline"></i>Hold
         </button>
         
-        <input type="number" placeholder="Final score" class="final-score">
+        <!-- Cách 1: Sử dụng v-model để ràng buộc dữ liệu 2 chiều 
+            Không được sử dụng v-model vì finalScore ở đây là Props
+        -->
+        <input 
+            v-bind:disabled="isPlayingCom"
+            v-bind:value="finalScoreCom"
+            v-on:input="$emit('handleChangeFinalScoreCom', $event)"
+            type="number" placeholder="Final score" class="final-score">
+
+        <!-- <input 
+            v-model="valueTest"
+            type="number" placeholder="Final score" class="final-score"> -->
+        
+        <!-- Cách 2: Sử dụng v-on:input để set giá trị lại cho value
+            Sử dụng event để notification input khi có dữ liệu:
+                Design 1 hàm  (handleInput)-->
+        <!-- <input 
+            v-bind:value="valueTest"
+            v-on:input="handleInput"
+            type="number" placeholder="Final score" class="final-score"> -->
+        
+        <!--      
+        hoặc viết tắt.-->
+        <!-- <input 
+            v-bind:value="valueTest"
+            v-on:input="valueTest = $event.target.value"
+            type="number" placeholder="Final score" class="final-score"> -->
+        <!-- dữ liệu thu thập từ ô input đều là dạng String -->
+    
+        <!-- 
+            1. Ràng buộc dữ liệu (thuộc tính HTML) -> v-bind
+                1 chiều từ data -> input
+            2. Ràng buộc dữ liệu 2 chiều -> v-model 
+                - 1 chiều từ data -> input
+                - 1 chiều từ input -> data
+            
+            Nếu như nó không phải là data trực tiếp của Component Controls -> không được phép thay đổi
+        -->
     </div>
 </template>
 
 <script>
 export default {
     name: 'controls',
+    props: {
+        isPlayingCom: {type: Boolean, default: false},
+        finalScoreCom: {type: [Number, String], default: 100}
+    },
     data() {
         return {
-
+            valueTest: 100
         }
     },
     methods: {
+        // handleInput(e) {
+        //     this.valueTest = e.target.value;
+        //     console.log(e.target.value);
+        // },
         newGame() {
             console.log('newGame Control.vue');
             // transmits event to handleNewGame of App.vue

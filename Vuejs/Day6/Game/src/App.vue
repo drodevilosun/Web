@@ -10,6 +10,9 @@
       v-on:handleNewGame="handleNewGame"
       v-on:handleRollDice="handleRollDiceApp"
       v-on:handleHoldScoreCom="handleHoldScore"
+      v-bind:finalScoreCom="finalScore"
+      v-on:handleChangeFinalScoreCom="handleChangeFinalScore"
+	  v-bind:isPlayingCom="isPlaying"
     />
     <dices 
       v-bind:dicesCom="dices"
@@ -34,12 +37,13 @@ export default {
 
   data () {
     return {
-      isPlaying: false,
-      activePlayer: 0, // ai là người chơi
-      isOpenPopup: false,
-      currentScore: 40,
-      scoresPlayer: [40, 33],
-      dices: [3, 6]
+		isPlaying: false,
+		activePlayer: 0, // ai là người chơi
+		isOpenPopup: false,
+		currentScore: 40,
+		scoresPlayer: [40, 33],
+		dices: [3, 6],
+		finalScore: 100
       
     }
   },
@@ -50,6 +54,22 @@ export default {
     PopupRule
   },
   methods: {
+    handleChangeFinalScore(e)
+    {
+        // console.log(e.target);
+        // console.log(e.target.value);
+		var number = parseInt(e.target.value);
+
+		if(isNaN(number))
+		{
+			this.finalScore = '';
+		}
+		else
+		{
+			this.finalScore = number;
+		}
+        // console.log(parseInt(e.target.value));
+    },
     handleHoldScore()
     {
 		if (this.isPlaying === true)
@@ -83,9 +103,6 @@ export default {
 
 			/*Cách 2: sử dụng set */
 			this.$set(this.scoresPlayer, activePlayer, scoreOld + currentScore);
-			
-			
-			
 
 			this.nextPlalyer();
 			// console.log(cloneScorePlayer);
