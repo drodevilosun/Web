@@ -2,6 +2,7 @@
 <div class="wrapper clearfix">
     
     <players 
+	    v-bind:isWinnerCom="isWinner"
       v-bind:activeplayer="activePlayer"
       v-bind:currentScore="currentScore"
       v-bind:scoresPlayer="scoresPlayer"
@@ -43,7 +44,7 @@ export default {
 		currentScore: 40,
 		scoresPlayer: [40, 33],
 		dices: [3, 6],
-		finalScore: 100
+		finalScore: 10
       
     }
   },
@@ -52,6 +53,19 @@ export default {
     Controls,
     Dices,
     PopupRule
+  },
+  computed: {
+	  isWinner () {
+		  let {scoresPlayer, finalScore } = this;
+
+		  if ((scoresPlayer[0] >= finalScore || scoresPlayer[1] >= finalScore) && this.isPlaying === true)
+		  {
+			  //DÙng cuộc chơi
+			  this.isPlaying = false;
+			  return true;
+		  }
+		  return false;
+	  }
   },
   methods: {
     handleChangeFinalScore(e)
@@ -104,7 +118,10 @@ export default {
 			/*Cách 2: sử dụng set */
 			this.$set(this.scoresPlayer, activePlayer, scoreOld + currentScore);
 
-			this.nextPlalyer();
+			if (!this.isWinner)
+			{
+				this.nextPlalyer();
+			}
 			// console.log(cloneScorePlayer);
 
 		}

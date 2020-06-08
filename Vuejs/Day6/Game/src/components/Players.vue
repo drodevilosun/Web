@@ -1,7 +1,10 @@
 <template>
     <div>
-        <div class="player-panel" v-bind:class="{ active: activeplayer == 0  }">
-            <div class="player-name">Player 1</div>
+        <div class="player-panel" v-bind:class="{ 
+                active: activeplayer == 0 && !this.isWinnerCom,
+                winner: activeplayer == 0 && this.isWinnerCom
+            }">
+            <div class="player-name">{{ getNamePlayer(0) }}</div>
             <div class="player-score">{{ scoresPlayer[0] }}</div>
             <div class="player-current-box">
                 <div class="player-current-label">Current</div>
@@ -9,8 +12,11 @@
             </div>
         </div>
         
-        <div class="player-panel" v-bind:class="{ active: activeplayer == 1 }">
-            <div class="player-name">Player 2</div>
+        <div class="player-panel" v-bind:class="{
+                active: activeplayer == 1 && !this.isWinnerCom,
+                winner: activeplayer == 1 && this.isWinnerCom
+            }">
+            <div class="player-name">{{ getNamePlayer(1) }}</div>
             <div class="player-score">{{ scoresPlayer[1] }}</div>
             <div class="player-current-box">
                 <div class="player-current-label">Current</div>
@@ -26,11 +32,23 @@ export default {
     props: {
         scoresPlayer: {type: Array, default: [0, 0]},
         currentScore: {type: Number, default: 0},
-        activeplayer: {type: Number, defalult: 0}
+        activeplayer: {type: Number, default: 0},
+        isWinnerCom:  {type: Boolean, default: false}
     },
     data() {
         return {
             
+        }
+    },
+    methods: {
+        getNamePlayer(index) {
+            var defaultName = 'Player ' + (index + 1);
+            console.log(index, defaultName, this.isWinnerCom, this.activeplayer);
+            // Player hiện tại và có người thắng cuộc
+            if (this.activeplayer == index && this.isWinnerCom) {
+                defaultName = 'Winner';
+            }
+            return defaultName;
         }
     }
 
