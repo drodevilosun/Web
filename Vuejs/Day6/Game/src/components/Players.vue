@@ -3,7 +3,7 @@
         <div class="player-panel" v-bind:class="{ 
                 active: activeplayer == 0 && !this.isWinnerCom,
                 winner: activeplayer == 0 && this.isWinnerCom
-            }">
+        }">
             <div class="player-name">{{ getNamePlayer(0) }}</div>
             <div class="player-score">{{ scoresPlayer[0] }}</div>
             <div class="player-current-box">
@@ -15,7 +15,7 @@
         <div class="player-panel" v-bind:class="{
                 active: activeplayer == 1 && !this.isWinnerCom,
                 winner: activeplayer == 1 && this.isWinnerCom
-            }">
+        }">
             <div class="player-name">{{ getNamePlayer(1) }}</div>
             <div class="player-score">{{ scoresPlayer[1] }}</div>
             <div class="player-current-box">

@@ -38,13 +38,13 @@ export default {
 
   data () {
     return {
-		isPlaying: false,
-		activePlayer: 0, // ai là người chơi
-		isOpenPopup: false,
-		currentScore: 40,
-		scoresPlayer: [40, 33],
-		dices: [3, 6],
-		finalScore: 10
+      isPlaying: false,
+      activePlayer: 0, // ai là người chơi
+      isOpenPopup: false,
+      currentScore: 40,
+      scoresPlayer: [40, 33],
+      dices: [3, 6],
+      finalScore: 10
       
     }
   },
@@ -72,17 +72,17 @@ export default {
     {
         // console.log(e.target);
         // console.log(e.target.value);
-		var number = parseInt(e.target.value);
+      var number = parseInt(e.target.value);
 
-		if(isNaN(number))
-		{
-			this.finalScore = '';
-		}
-		else
-		{
-			this.finalScore = number;
-		}
-        // console.log(parseInt(e.target.value));
+      if(isNaN(number))
+      {
+        this.finalScore = '';
+      }
+      else
+      {
+        this.finalScore = number;
+      }
+          // console.log(parseInt(e.target.value));
     },
     handleHoldScore()
     {
@@ -176,7 +176,7 @@ export default {
 			{
 				// Đổi lượt chơi
 				let activePlayer = this.activePlayer;
-				// Use arrow fucntion
+				// Use arrow function
 				setTimeout(() => {
 					console.log(this); //'this' ở đây thuộc thằng Vue
 					alert(`Người chơi Player ${this.activePlayer + 1} đã quay trúng số 1. Next Player`);
